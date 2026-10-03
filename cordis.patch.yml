@@ -25,11 +25,17 @@
         # 抓取缓存；客户端的刷新走它
         cacheTtlMs: 600000
         # 订阅源：title 是显示名，url 是 feed 地址（RSS 2.0 / Atom 都行）
+        #
+        # ⚠️ 2026-10-04：原来那四个华尔街日报的源**已经死了** —— WSJ 关掉了公开 RSS，
+        # feeds.a.dj.com 那几个地址冻结在 2025-01（实测最新条目 614 天前）。
+        # 换成实测「最新条目 0 天前」的活源；NYT 三个正好对上原来的国际/市场/科技三个栏目。
+        # 复核办法（别只信眼睛）：抓下来看最新 pubDate 与今天差几天，>30 天就是死的。
         feeds:
-          - { title: '华尔街日报 · 国际', url: 'https://feeds.a.dj.com/rss/RSSWorldNews.xml' }
-          - { title: '华尔街日报 · 市场', url: 'https://feeds.a.dj.com/rss/RSSMarketsMain.xml' }
-          - { title: '华尔街日报 · 科技', url: 'https://feeds.a.dj.com/rss/RSSWSJD.xml' }
-          - { title: '华尔街日报 · 美国商业', url: 'https://feeds.a.dj.com/rss/WSJcomUSBusiness.xml' }
+          - { title: '纽约时报 · 国际', url: 'https://rss.nytimes.com/services/xml/rss/nyt/World.xml' }
+          - { title: '纽约时报 · 商业', url: 'https://rss.nytimes.com/services/xml/rss/nyt/Business.xml' }
+          - { title: '纽约时报 · 科技', url: 'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml' }
+          - { title: '卫报 · 国际', url: 'https://www.theguardian.com/world/rss' }
+          - { title: '经济学人', url: 'https://www.economist.com/finance-and-economics/rss.xml' }
           - { title: 'Hacker News', url: 'https://hnrss.org/frontpage' }
           - { title: '少数派', url: 'https://sspai.com/feed' }
           - { title: '阮一峰的网络日志', url: 'https://www.ruanyifeng.com/blog/atom.xml' }
