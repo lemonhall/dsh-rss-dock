@@ -1,0 +1,53 @@
+{
+  "name": "dsh-rss-dock",
+  "version": "0.1.0",
+  "description": "DSH 右侧栏的 RSS 阅读器：订阅源在配置里，条目按时间排，可标已读/收藏；宿主抓取，走本机代理。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "icon.svg"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "dsh-bundle",
+    "deepseek-harness",
+    "rss",
+    "feed",
+    "reader",
+    "sidebar"
+  ],
+  "author": "lemonhall",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lemonhall/dsh-rss-dock.git"
+  },
+  "homepage": "https://github.com/lemonhall/dsh-rss-dock#readme",
+  "bugs": {
+    "url": "https://github.com/lemonhall/dsh-rss-dock/issues"
+  },
+  "meta": {
+    "title": "RSS 阅读器",
+    "description": "右侧栏一个 tab：左侧订阅源、右侧条目，按时间排，可标已读与收藏；订阅源在配置里改。"
+  },
+  "icon": "./icon.svg",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-sidebar-right"
+      ]
+    }
+  }
+}

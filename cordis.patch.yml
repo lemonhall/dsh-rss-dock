@@ -1,0 +1,32 @@
+# ============================================================================
+# dsh-rss-dock —— DSH bundle patch
+# ============================================================================
+# 宿主半（lib/index.js）：
+#   GET  /dsh-rss/feeds   订阅源清单（来自下面的 config）
+#   GET  /dsh-rss/items   抓取并解析（curl 走本机代理；RSS 2.0 与 Atom 都认）
+#   GET/POST /dsh-rss/state  已读/收藏（存插件自己的目录）
+#   + rss_panel 工具（Agent 侧读写）
+# 客户端半（lib/client.js）是右侧栏 tab：左订阅源、右条目。
+#
+# 安装：
+#   plugin_manager install_bundle  target=link:E:\development\dsh-rss-dock
+# ⚠️ 客户端半边改动要重启应用；新增宿主路由也要重启（实测）。
+# ============================================================================
+
+- insert:
+    - id: dsh-rss-dock
+      name: dsh-rss-dock
+      config:
+        # 抓 RSS 走本机代理（很多源在墙外）
+        proxy: 'http://127.0.0.1:7897'
+        timeoutMs: 20000
+        # 单个源一次最多取多少条
+        maxItems: 40
+        # 抓取缓存；客户端的刷新走它
+        cacheTtlMs: 600000
+        # 订阅源：title 是显示名，url 是 feed 地址（RSS 2.0 / Atom 都行）
+        feeds:
+          - { title: 'Hacker News', url: 'https://hnrss.org/frontpage' }
+          - { title: '少数派', url: 'https://sspai.com/feed' }
+          - { title: '阮一峰的网络日志', url: 'https://www.ruanyifeng.com/blog/atom.xml' }
+          - { title: 'Cloudflare Blog', url: 'https://blog.cloudflare.com/rss/' }
