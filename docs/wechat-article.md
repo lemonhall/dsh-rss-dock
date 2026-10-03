@@ -31,9 +31,14 @@
 装：
 
 ```
+# 先装 DSH（桌面版从 https://harness.deepseek.com 下载安装包；只要 CLI 的话）：
+npm i -g @deepseek-ai/dsh
+
+# 再装这个插件（桌面版也可以走 GUI：右侧栏「插件 → 添加插件」）
+dsh plugin --profile desktop add dsh-rss-dock
+
+# 如果你是开发者、想用本地目录直接挂：
 plugin_manager install_bundle target=link:E:\development\dsh-rss-dock
-# 或从 npm
-dash plugin --profile <profile> add dsh-rss-dock
 ```
 
 代码在 <https://github.com/lemonhall/dsh-rss-dock>，npm 上是 `dsh-rss-dock`。右侧栏点「**+**」→ 选「RSS 阅读器」就能看到它。
